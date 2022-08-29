@@ -1,51 +1,10 @@
+body,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
 body {
-    margin: 0;
-}
-
-h2 {
-  font-size: 32px;
-}
-
-#title-1,
-.red {
-  color: red;
-}
-
-.my-title {
-  color: #fff;
-  background-color: #333;
-}
-
-.flex {
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.box {
-    position: relative;
-
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    background-color: #333;
-    color: #fff;
-
-    margin: 20px 16px 14px 5px;
-    padding: 20px;
-    border: 5px solid red;
-}
-.box-absolute {
-    position: absolute;
-    width: 200px;
-    background-color: red;
-    color: black;
-    padding: 10px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
+  font-family: Arial, Helvetica, sans-serif;
 }

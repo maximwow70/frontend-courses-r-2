@@ -1,0 +1,11 @@
+.custom-features {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: rgb(128, 128, 128);
+}
+.custom-features__feature {
+    margin: 20px;
+}
