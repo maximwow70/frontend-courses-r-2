@@ -1,0 +1,24 @@
+.feature {
+  width: 300px;
+  text-align: center;
+}
+.feature__icon {
+  margin-bottom: 20px;
+
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(42, 165, 65);
+  border-radius: 50%;
+}
+.feature__title {
+  margin-bottom: 10px;
+}
+
+.feature.custom {
+    text-align: left;
+}
+
+.w-60 {
+    width: 60px;
+}
