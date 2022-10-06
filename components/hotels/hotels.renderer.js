@@ -21,15 +21,14 @@ class HotelsComponentRender {
   }
 
   getWeatherTitleHTMLElement(title) {
-    const weatherTitleHTMLElement = document.createElement("h3");
-    weatherTitleHTMLElement.classList.add("weather__title");
-    weatherTitleHTMLElement.innerHTML = title;
-    return weatherTitleHTMLElement;
+    return this.createElement("div", "weather__title", title);
   }
 
   getHotelListElement(hotels) {
-    const hotelListHTMLElement = document.createElement("div");
-    hotelListHTMLElement.classList.add("weather__hotel-list");
+    const hotelListHTMLElement = this.createElement(
+      "div",
+      "weather__hotel-list"
+    );
     hotels.forEach((hotel) => {
       hotelListHTMLElement.appendChild(this.getHotelElement(hotel));
     });
@@ -37,9 +36,15 @@ class HotelsComponentRender {
   }
 
   getHotelElement(hotel) {
-    const hotelHTMLElement = document.createElement("div");
-    hotelHTMLElement.classList.add("weather__hotel");
-    hotelHTMLElement.innerHTML = hotel.getFullName();
-    return hotelHTMLElement;
+    return this.createElement("div", "weather__hotel", hotel.getFullName());
+  }
+
+  createElement(tagName, classes, html) {
+    const element = document.createElement(tagName);
+    element.classList.add(classes);
+    if (Boolean(html)) {
+      element.innerHTML = html;
+    }
+    return element;
   }
 }
