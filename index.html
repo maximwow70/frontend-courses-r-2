@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My title</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./components/hotels/hotels.css" />
   </head>
   <body>
+    <div class="app">
+      <div class="app__weather"></div>
+      <div class="app__minsk-weather"></div>
+    </div>
 
     <!-- scripts -->
+    <script src="./components/hotels/models/hotel.js"></script>
+    <script src="./components/hotels/models/hotel-detailed.js"></script>
+    <script src="./components/hotels/hotels.renderer.js"></script>
+    <script src="./components/hotels/hotels.component.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>
