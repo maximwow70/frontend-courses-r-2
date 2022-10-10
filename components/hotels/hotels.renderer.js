@@ -2,6 +2,8 @@ class HotelsComponentRender {
   rootElement;
 
   weatherHTMLElement;
+  hotelListHTMLElement;
+  newHotelElement;
 
   constructor(rootElement) {
     this.rootElement = rootElement;
@@ -15,9 +17,20 @@ class HotelsComponentRender {
 
     this.weatherHTMLElement.appendChild(this.getWeatherTitleHTMLElement(title));
 
-    this.weatherHTMLElement.appendChild(this.getHotelListElement(hotels));
+    this.hotelListHTMLElement = this.getHotelListElement(hotels);
+    this.weatherHTMLElement.appendChild(this.hotelListHTMLElement);
+
+    this.newHotelElement = this.createElement("input", "weather__add-hotel");
+    this.weatherHTMLElement.appendChild(this.newHotelElement);
 
     this.rootElement.appendChild(this.weatherHTMLElement);
+  }
+
+  updateHotelList(hotels) {
+    this.hotelListHTMLElement.innerHTML = "";
+    hotels.forEach((hotel) => {
+      this.hotelListHTMLElement.appendChild(this.getHotelElement(hotel));
+    });
   }
 
   getWeatherTitleHTMLElement(title) {
@@ -36,7 +49,13 @@ class HotelsComponentRender {
   }
 
   getHotelElement(hotel) {
-    return this.createElement("div", "weather__hotel", hotel.getFullName());
+    const hotelHTMLElement = this.createElement(
+      "div",
+      "weather__hotel",
+      hotel.getFullName()
+    );
+    hotelHTMLElement.setAttribute("data-id", hotel.id);
+    return hotelHTMLElement;
   }
 
   createElement(tagName, classes, html) {

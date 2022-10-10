@@ -7,11 +7,28 @@
   margin-bottom: 10px;
 }
 
+.weather__hotel-list {
+  margin-bottom: 10px;
+}
+
 .weather__hotel {
   background-color: #fff;
   color: #333;
   padding: 5px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+.weather__hotel:hover {
+  background-color: rgb(191, 64, 64);
+  color: #fff;
 }
 .weather__hotel:not(:last-child) {
   margin-bottom: 5px;
+}
+
+.weather__add-hotel {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }

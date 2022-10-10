@@ -3,21 +3,63 @@ class HotelsComponent {
   hotels = [];
   title = "Default Title";
 
+  newHotel = "";
+
   constructor(rootElement, hotels, title) {
     this.renderer = new HotelsComponentRender(rootElement);
+
     this.hotels = hotels;
     this.title = title;
 
+    this.render();
+  }
+
+  removeHotelListener(event) {
+    const currentId = parseInt(event.target?.getAttribute("data-id"));
+    if (currentId !== null || currentId !== undefined) {
+      this.removeHotel(currentId);
+    }
+  }
+
+  render() {
     this.renderer.render(this.hotels, this.title);
+    this.renderer.weatherHTMLElement.addEventListener(
+      "click",
+      this.removeHotelListener
+    );
+    this.renderer.newHotelElement.addEventListener("input", () => {
+      this.newHotel = this.renderer.newHotelElement.value;
+    });
+    this.renderer.newHotelElement.addEventListener("keyup", (event) => {
+      if (event.code === "Enter") {
+        this.addHotel(new Hotel(this.getNewHotelId(), this.newHotel));
+        this.newHotel = "";
+        this.renderer.newHotelElement.value = "";
+      }
+    });
   }
 
   addHotel(hotel) {
     this.hotels = [...this.hotels, hotel];
-    this.renderer.render(this.hotels, this.title);
+    this.renderer.updateHotelList(this.hotels);
   }
 
-  removeHotel(hotel) {
-    this.hotels = this.hotels.filter((h) => h.id !== hotel.id);
-    this.renderer.render(this.hotels, this.title);
+  removeHotel(id) {
+    this.hotels = this.hotels.filter((hotel) => hotel.id !== id);
+    this.renderer.updateHotelList(this.hotels);
+  }
+
+  getNewHotelId() {
+    return this.hotels.length > 0
+      ? Math.max(...this.hotels.map((h) => h.id)) + 1
+      : 0;
+  }
+
+  destroy() {
+    this.renderer.rootElement.remove();
+    this.renderer.weatherHTMLElement.removeEventListener(
+      "click",
+      this.removeHotelListener
+    );
   }
 }

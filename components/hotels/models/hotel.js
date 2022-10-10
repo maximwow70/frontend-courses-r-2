@@ -5,6 +5,7 @@ class Hotel {
   name;
   type;
   caption;
+  owner;
 
   _secret = "000";
 
@@ -17,11 +18,12 @@ class Hotel {
     this._secret = secret === 4 ? secret * 2 : secret;
   }
 
-  constructor(id = Hotel.defaultId, name, type, caption) {
+  constructor(id = Hotel.defaultId, name, type, caption, owner) {
     this.id = id;
     this.name = name;
     this.type = type;
     this.caption = `${caption} ${this._secret}`;
+    this.owner = owner;
   }
 
   getFullName() {
