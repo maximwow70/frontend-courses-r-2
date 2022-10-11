@@ -14,12 +14,12 @@ class HotelsComponent {
     this.render();
   }
 
-  removeHotelListener(event) {
+  removeHotelListener = (event) => {
     const currentId = parseInt(event.target?.getAttribute("data-id"));
     if (currentId !== null || currentId !== undefined) {
       this.removeHotel(currentId);
     }
-  }
+  };
 
   render() {
     this.renderer.render(this.hotels, this.title);
