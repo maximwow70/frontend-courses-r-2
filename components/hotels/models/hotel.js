@@ -22,12 +22,27 @@ class Hotel {
     this.id = id;
     this.name = name;
     this.type = type;
-    this.caption = `${caption} ${this._secret}`;
+    this.caption = caption;
     this.owner = owner;
   }
 
-  getFullName() {
-    return `${this.id} ${this.name}`;
+  static fromJSON(json) {
+    return new Hotel(
+      `${json.destinationId}-${json.geoId}`,
+      json.name,
+      json.type,
+      json.caption
+    );
+  }
+
+  static toJSON(hotel) {
+    return {
+      destinationId: hotel.id.split("-")[0],
+      geoId: hotel.id.split("-")[1],
+      name: hotel.name,
+      type: hotel.type,
+      caption: hotel.caption,
+    };
   }
 
   equals(hotel) {

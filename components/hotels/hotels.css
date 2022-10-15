@@ -26,6 +26,9 @@
 .weather__hotel:not(:last-child) {
   margin-bottom: 5px;
 }
+.weather__hotel .highlighted {
+  font-weight: bold;
+}
 
 .weather__add-hotel {
   display: block;

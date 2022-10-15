@@ -15,7 +15,7 @@ class HotelsComponent {
   }
 
   removeHotelListener = (event) => {
-    const currentId = parseInt(event.target?.getAttribute("data-id"));
+    const currentId = event.target?.getAttribute("data-id");
     if (currentId !== null || currentId !== undefined) {
       this.removeHotel(currentId);
     }
@@ -32,7 +32,9 @@ class HotelsComponent {
     });
     this.renderer.newHotelElement.addEventListener("keyup", (event) => {
       if (event.code === "Enter") {
-        this.addHotel(new Hotel(this.getNewHotelId(), this.newHotel));
+        this.addHotel(
+          new Hotel(this.getNewHotelId(), this.newHotel, "", this.newHotel)
+        );
         this.newHotel = "";
         this.renderer.newHotelElement.value = "";
       }
@@ -40,6 +42,7 @@ class HotelsComponent {
   }
 
   addHotel(hotel) {
+    
     this.hotels = [...this.hotels, hotel];
     this.renderer.updateHotelList(this.hotels);
   }
@@ -50,9 +53,9 @@ class HotelsComponent {
   }
 
   getNewHotelId() {
-    return this.hotels.length > 0
-      ? Math.max(...this.hotels.map((h) => h.id)) + 1
-      : 0;
+    return `${Math.floor(Math.random() * 10000000)}-${Math.floor(
+      Math.random() * 10000000
+    )}`;
   }
 
   destroy() {

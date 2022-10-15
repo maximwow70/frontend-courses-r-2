@@ -52,7 +52,7 @@ class HotelsComponentRender {
     const hotelHTMLElement = this.createElement(
       "div",
       "weather__hotel",
-      hotel.getFullName()
+      hotel.caption
     );
     hotelHTMLElement.setAttribute("data-id", hotel.id);
     return hotelHTMLElement;
