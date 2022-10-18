@@ -42,7 +42,6 @@ class HotelsComponent {
   }
 
   addHotel(hotel) {
-    
     this.hotels = [...this.hotels, hotel];
     this.renderer.updateHotelList(this.hotels);
   }
