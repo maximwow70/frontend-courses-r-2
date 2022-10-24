@@ -7,6 +7,7 @@
     <title>My title</title>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./components/hotels/hotels.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.21.0/system.js"></script>
   </head>
   <body>
     <div class="app">
@@ -16,14 +17,10 @@
     </div>
 
     <!-- scripts -->
-    <script src="./components/observable/observable.js"></script>
-    <script src="./components/observable/subscriber.js"></script>
 
-    <script src="./components/hotels/models/hotel.js"></script>
-    <script src="./components/hotels/models/hotel-detailed.js"></script>
-    <script src="./components/hotels/hotels.renderer.js"></script>
-    <script src="./components/hotels/hotels.component.js"></script>
-    <script src="./components/hotels/hotels.data.service.js"></script>
-    <script src="./index.js"></script>
+    <script src="./dist/index.js"></script>
+    <script>
+      System.load("index");
+    </script>
   </body>
 </html>

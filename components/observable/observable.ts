@@ -1,23 +1,25 @@
-class Observable {
-  value;
-  subscribers = [];
+import Subscriber from "./subscriber";
 
-  constructor(value) {
+export class Observable<T> {
+  value: T;
+  subscribers: Subscriber[] = [];
+
+  constructor(value: T) {
     this.value = value;
   }
 
-  next(value) {
+  next(value: T) {
     this.value = value;
     this.subscribers.forEach((subscriber) => {
       subscriber.action(this.value);
     });
   }
 
-  subscribe(subscriber) {
+  subscribe(subscriber: Subscriber) {
     this.subscribers = [...this.subscribers, subscriber];
   }
 
-  unsubscribe(subscriber) {
+  unsubscribe(subscriber: Subscriber) {
     this.subscribers = this.subscribers.filter((s) => s.id !== subscriber.id);
   }
 }
