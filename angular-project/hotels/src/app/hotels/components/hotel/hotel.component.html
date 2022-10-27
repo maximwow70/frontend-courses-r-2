@@ -1,0 +1,12 @@
+<div
+  class="hotel"
+  [title]="hotel.name"
+  [class.hotel--detailed]="hotel.isDetailed"
+>
+  <input
+    type="text"
+    [(ngModel)]="hotel.name"
+    (ngModelChange)="onHotelChange()"
+  />
+  <div class="hotel__name" (click)="hotelClicked($event)">{{ hotel.name }}</div>
+</div>

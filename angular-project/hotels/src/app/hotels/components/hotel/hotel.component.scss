@@ -1,0 +1,18 @@
+:host {
+  display: inline-block;
+  width: 300px;
+  background-color: #333;
+  padding: 5px;
+
+  color: #fff;
+}
+
+.hotel {
+  &.hotel--detailed {
+    color: rgb(214, 20, 20);
+  }
+
+  &__name {
+    cursor: pointer;
+  }
+}

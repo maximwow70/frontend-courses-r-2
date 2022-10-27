@@ -1,2 +1,12 @@
-<h2>hello</h2>
-{{ title }}
+<div class="app">
+  <div class="app__hotel">
+    <app-hotel *ngFor="let hotel of hotels" [hotel]="hotel"></app-hotel>
+  </div>
+  <input
+    type="text"
+    class="app__new-hotel"
+    [(ngModel)]="newHotelName"
+    (keydown.enter)="addNewHotel()"
+    [class.disabled]="!newHotelName"
+  />
+</div>

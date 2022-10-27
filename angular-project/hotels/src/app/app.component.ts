@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Hotel } from './hotels/models/hotel';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,44 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'qweqweqweqwe';
+  public newHotelName: string = '';
 
-  constructor() {
-    setTimeout(() => {
-      this.title = 'new title';
-    }, 2000);
+  public hotels: Hotel[] = [
+    {
+      id: '1',
+      name: 'Hotel 1',
+      isDetailed: false,
+    },
+    {
+      id: '2',
+      name: 'Hotel 2',
+      isDetailed: true,
+    },
+    {
+      id: '13',
+      name: 'Hotel 13',
+      isDetailed: true,
+    },
+    {
+      id: '15',
+      name: 'Hotel 15',
+      isDetailed: false,
+    },
+  ];
+
+  constructor() {}
+
+  public addNewHotel(): void {
+    if (this.newHotelName) {
+      this.hotels = [
+        ...this.hotels,
+        {
+          id: String(Math.random()),
+          name: this.newHotelName,
+          isDetailed: false,
+        },
+      ];
+      this.newHotelName = '';
+    }
   }
 }
