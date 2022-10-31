@@ -1,4 +1,7 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  
   &__hotel {
     &:not(:last-child) {
       margin-bottom: 10px;

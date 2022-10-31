@@ -11,6 +11,10 @@
   &.hotel--detailed {
     color: rgb(214, 20, 20);
   }
+  
+  &.hotel--custom {
+    font-size: 32px;
+  }
 
   &__name {
     cursor: pointer;

@@ -2,11 +2,27 @@
   class="hotel"
   [title]="hotel.name"
   [class.hotel--detailed]="hotel.isDetailed"
+  [class.hotel--custom]="hotel.isCustom"
 >
+  <ng-container *ngIf="hotel.isCustom; else notCustomTemplate">
+    <p>custom = true</p>
+  </ng-container>
+  <ng-content></ng-content>
   <input
     type="text"
     [(ngModel)]="hotel.name"
     (ngModelChange)="onHotelChange()"
   />
-  <div class="hotel__name" (click)="hotelClicked($event)">{{ hotel.name }}</div>
+  <div class="hotel__name" appColorRed>{{ hotel.name }}</div>
+  <div *ngTemplateOutlet="outletTemplate"></div>
+  <div *ngTemplateOutlet="content"></div>
+  <div (click)="onHotelRemove()">x</div>
 </div>
+
+<ng-template #notCustomTemplate>
+  <p>custom = false</p>
+</ng-template>
+
+<ng-template #outletTemplate>
+  <p>outletTemplate</p>
+</ng-template>
