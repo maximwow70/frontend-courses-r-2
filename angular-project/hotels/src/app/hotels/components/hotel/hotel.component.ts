@@ -12,8 +12,22 @@ import {
   AfterViewInit,
   OnDestroy,
   SimpleChanges,
+  ChangeDetectorRef,
 } from '@angular/core';
+import {
+  delay,
+  filter,
+  map,
+  Observable,
+  of,
+  Subject,
+  Subscription,
+  switchMap,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { Hotel } from '../../models/hotel';
+import { HotelsService } from '../../services/hotels.service';
 
 @Component({
   selector: 'app-hotel',
@@ -24,6 +38,8 @@ import { Hotel } from '../../models/hotel';
 export class HotelComponent
   implements OnInit, OnChanges, AfterViewInit, OnDestroy
 {
+  private destroy$: Subject<void> = new Subject<void>();
+
   @Input()
   public hotel: Hotel;
 
@@ -41,16 +57,15 @@ export class HotelComponent
 
   private myInterval: any;
 
-  constructor() {}
+  constructor(
+  ) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   ngOnInit(): void {
-    if (this.hotel?.id === '1') {
-      this.myInterval = setInterval(() => console.log('1'), 1000);
-    }
+    // if (this.hotel?.id === '1') {
+    //   this.myInterval = setInterval(() => console.log('1'), 1000);
+    // }
   }
 
   ngAfterViewInit(): void {}
@@ -59,7 +74,9 @@ export class HotelComponent
     if (this.myInterval) {
       clearInterval(this.myInterval);
     }
-    console.log(`component destroyed ${this.hotel.id}`);
+
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   @HostListener('click')

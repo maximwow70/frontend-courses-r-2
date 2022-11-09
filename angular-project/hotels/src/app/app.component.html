@@ -1,30 +1,10 @@
-<div class="app">
-  <ng-container *ngFor="let hotel of hotels; let i = index">
-    <div class="app__hotel" *ngIf="hotel">
-      <app-hotel
-        [hotel]="hotel"
-        [content]="appTemplate"
-        (hotelChange)="hotelChange($event)"
-        (hotelRemove)="hotelRemove(hotel)"
-      >
-        <p>{{ i + 1 }}</p>
-      </app-hotel>
-    </div>
-  </ng-container>
-  <div class="app__hotel" *ngIf="changeDetectionHotel">
-    <app-hotel [hotel]="changeDetectionHotel"> </app-hotel>
-    {{ changeDetectionHotel.name }}
-    <button (click)="changeDetectionHotelRemove()"></button>
-
-    <input
-      type="text"
-      class="app__new-hotel"
-      #newHotelNameInput
-      [(ngModel)]="newHotelName"
-      (keydown.enter)="addNewHotel(newHotelNameInput)"
-      [class.disabled]="!newHotelName"
-    />
+<div class="app" *ngIf="!isLoading; else loading">
+  <div class="app__hotels">
+    <app-hotels></app-hotels>
   </div>
-
-  <ng-template #appTemplate> app template </ng-template>
+  <div class="app__hotels">
+    <app-hotel-names></app-hotel-names>
+  </div>
 </div>
+
+<ng-template #loading>...loading</ng-template>

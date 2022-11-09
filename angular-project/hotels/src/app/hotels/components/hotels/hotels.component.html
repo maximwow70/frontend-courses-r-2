@@ -1,0 +1,15 @@
+<ng-container *ngFor="let hotel of hotels; let i = index">
+  <div class="hotels__hotel" *ngIf="hotel">
+    <app-hotel
+      [hotel]="hotel"
+      [content]="appTemplate"
+      (hotelChange)="hotelChange($event)"
+      (hotelRemove)="hotelRemove(hotel)"
+    >
+      <p>{{ i + 1 }}</p>
+    </app-hotel>
+  </div>
+</ng-container>
+<input type="text" [(ngModel)]="newHotelName" (keydown.enter)="addHotel()">
+
+<ng-template #appTemplate> app template </ng-template>

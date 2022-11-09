@@ -1,0 +1,17 @@
+.hotels {
+  display: flex;
+  flex-direction: column;
+
+  &__hotel {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__new-hotel {
+    &.disabled {
+      border-color: red;
+      outline-color: red;
+    }
+  }
+}
