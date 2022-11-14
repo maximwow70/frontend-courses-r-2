@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   isUserActivated: true,
+  baseAPI: "assets/hotels.json"
 };
 
 /*

@@ -1,15 +1,31 @@
-<ng-container *ngFor="let hotel of hotels; let i = index">
-  <div class="hotels__hotel" *ngIf="hotel">
-    <app-hotel
-      [hotel]="hotel"
-      [content]="appTemplate"
-      (hotelChange)="hotelChange($event)"
-      (hotelRemove)="hotelRemove(hotel)"
-    >
-      <p>{{ i + 1 }}</p>
-    </app-hotel>
+<div class="hotels">
+  <div class="hotels__list">
+    <ng-container *ngFor="let hotel of hotels; let i = index">
+      <div class="hotels__hotel" *ngIf="hotel">
+        <app-hotel
+          [class.selected]="isHotelSelected(hotel)"
+          [hotel]="hotel"
+          [content]="appTemplate"
+          (hotelChange)="hotelChange($event)"
+          (hotelRemove)="hotelRemove(hotel)"
+          (hotelEdit)="hotelEdit(hotel)"
+        >
+          <p>{{ i + 1 }}</p>
+        </app-hotel>
+      </div>
+    </ng-container>
+    <input
+      type="text"
+      [(ngModel)]="newHotelName"
+      (keydown.enter)="addHotel()"
+    />
   </div>
-</ng-container>
-<input type="text" [(ngModel)]="newHotelName" (keydown.enter)="addHotel()">
+  <div class="hotels__hotel-detailed">
+    <app-hotel-detailed
+      *ngIf="selectedHotel"
+      [hotel]="selectedHotel"
+    ></app-hotel-detailed>
+  </div>
+</div>
 
 <ng-template #appTemplate> app template </ng-template>

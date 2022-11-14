@@ -4,19 +4,21 @@
   [class.hotel--detailed]="hotel.isDetailed"
   [class.hotel--custom]="hotel.isCustom"
 >
-  <ng-container *ngIf="hotel.isCustom; else notCustomTemplate">
+  <!-- <ng-container *ngIf="hotel.isCustom; else notCustomTemplate">
     <p>custom = true</p>
-  </ng-container>
-  <ng-content></ng-content>
+  </ng-container> -->
+  <!-- <ng-content></ng-content> -->
   <input
+    class="hotel__name"
     type="text"
     [(ngModel)]="hotel.name"
     (ngModelChange)="onHotelChange()"
   />
-  <div class="hotel__name" appColorRed>{{ hotel.name }}</div>
-  <div *ngTemplateOutlet="outletTemplate"></div>
-  <div *ngTemplateOutlet="content"></div>
-  <div (click)="onHotelRemove()">x</div>
+  <!-- <div class="hotel__name" appColorRed>{{ hotel.name }}</div> -->
+  <!-- <div *ngTemplateOutlet="outletTemplate"></div> -->
+  <!-- <div *ngTemplateOutlet="content"></div> -->
+  <button class="hotel__action" type="button" (click)="onHotelRemove()">delete</button>
+  <button class="hotel__action" type="button" (click)="onEditHotel()">edit</button>
 </div>
 
 <ng-template #notCustomTemplate>

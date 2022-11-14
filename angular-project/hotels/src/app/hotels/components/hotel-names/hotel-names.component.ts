@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { cloneDeep } from 'lodash';
-import { delay, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Hotel } from '../../models/hotel';
 import { HotelsService } from '../../services/hotels.service';
 

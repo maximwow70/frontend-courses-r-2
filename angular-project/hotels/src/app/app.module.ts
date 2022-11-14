@@ -6,12 +6,18 @@ import { AppComponent } from './app.component';
 import { HotelsModule } from './hotels/hotels.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
-import { AboutComponent } from './pages/about/about.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { ContactsGuard } from './pages/contacts/guard/contacts.guard';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ContactsComponent, AboutComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ContactsComponent,
+    NavigationComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HotelsModule, FormsModule],
-  providers: [],
+  providers: [ContactsGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

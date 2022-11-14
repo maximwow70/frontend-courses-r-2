@@ -1,0 +1,22 @@
+<div class="navigation">
+  <a
+    class="navigation__link"
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >home</a
+  >
+  <a class="navigation__link" routerLink="/hotels" routerLinkActive="active"
+    >hotels</a
+  >
+  <a
+    class="navigation__link"
+    routerLink="/contacts"
+    routerLinkActive="active"
+    *ngIf="isContactsVisible"
+    >contacts</a
+  >
+  <a class="navigation__link" routerLink="/about" routerLinkActive="active"
+    >about</a
+  >
+</div>

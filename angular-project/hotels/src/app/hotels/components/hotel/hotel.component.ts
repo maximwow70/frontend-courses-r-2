@@ -53,12 +53,14 @@ export class HotelComponent
   public hotelRemove: EventEmitter<void> = new EventEmitter<void>();
 
   @Output()
+  public hotelEdit: EventEmitter<void> = new EventEmitter<void>();
+
+  @Output()
   public hotelClicked: EventEmitter<void> = new EventEmitter<void>();
 
   private myInterval: any;
 
-  constructor(
-  ) {}
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {}
 
@@ -90,5 +92,9 @@ export class HotelComponent
 
   public onHotelChange(): void {
     this.hotelChange.emit(this.hotel);
+  }
+
+  public onEditHotel(): void {
+    this.hotelEdit.emit();
   }
 }

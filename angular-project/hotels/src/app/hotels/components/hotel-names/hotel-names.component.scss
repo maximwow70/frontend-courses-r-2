@@ -1,6 +1,15 @@
+:host {
+  height: 100%;
+}
+
 .hotel-names {
+  height: 100%;
+  width: 200px;
+
   display: flex;
   flex-direction: column;
+
+  text-align: center;
 
   &__name {
     background-color: #333;

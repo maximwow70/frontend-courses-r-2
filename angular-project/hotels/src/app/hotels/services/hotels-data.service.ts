@@ -3,14 +3,10 @@ import { map, Observable } from 'rxjs';
 import { Hotel } from '../models/hotel';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class HotelsDataService {
-  public baseAPI: string =
-    'https://hotelsearch2.p.rapidapi.com/?location=Tbilisi';
-
   constructor(private httpClient: HttpClient) {}
 
   public getHotels(): Observable<Hotel[]> {
@@ -19,7 +15,7 @@ export class HotelsDataService {
       'X-RapidAPI-Host': 'hotelsearch2.p.rapidapi.com',
     });
     return this.httpClient
-      .get<Hotel[]>(this.baseAPI, {
+      .get<Hotel[]>(environment.baseAPI, {
         headers: httpHeaders,
       })
       .pipe(

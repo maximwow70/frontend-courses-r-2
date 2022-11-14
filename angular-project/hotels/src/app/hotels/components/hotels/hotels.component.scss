@@ -1,6 +1,18 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 .hotels {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+
+  &__hotel-detailed {
+    margin-left: 20px;
+    flex: 1;
+  }
 
   &__hotel {
     &:not(:last-child) {

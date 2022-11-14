@@ -5,18 +5,31 @@
   padding: 5px;
 
   color: #fff;
+
+  &.selected {
+    background-color: rgb(157, 64, 64);
+  }
 }
 
 .hotel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__name {
+    flex: 1;
+  }
+
+  &__action {
+    cursor: pointer;
+  }
+
   &.hotel--detailed {
     color: rgb(214, 20, 20);
   }
-  
+
   &.hotel--custom {
     font-size: 32px;
-  }
-
-  &__name {
-    cursor: pointer;
   }
 }
