@@ -1,0 +1,24 @@
+{
+  "suggestions": [
+    {
+      "entities": [
+        {
+          "geoId": "id 3",
+          "name": "hotel 3"
+        },
+        {
+          "geoId": "id 2",
+          "name": "hotel 2"
+        },
+        {
+          "geoId": "id 1",
+          "name": "hotel 1"
+        },
+        {
+          "geoId": "id 4",
+          "name": "hotel 4"
+        }
+      ]
+    }
+  ]
+}

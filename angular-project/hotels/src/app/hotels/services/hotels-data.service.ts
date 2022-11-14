@@ -8,9 +8,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class HotelsDataService {
-  constructor(private httpClient: HttpClient) {
-    
-  }
+  public baseAPI: string =
+    'https://hotelsearch2.p.rapidapi.com/?location=Tbilisi';
+
+  constructor(private httpClient: HttpClient) {}
 
   public getHotels(): Observable<Hotel[]> {
     const httpHeaders: HttpHeaders = new HttpHeaders({
@@ -18,12 +19,14 @@ export class HotelsDataService {
       'X-RapidAPI-Host': 'hotelsearch2.p.rapidapi.com',
     });
     return this.httpClient
-      .get<Hotel[]>('https://hotelsearch2.p.rapidapi.com/?location=Georgia', {
+      .get<Hotel[]>(this.baseAPI, {
         headers: httpHeaders,
       })
       .pipe(
         map((json: any) => {
-          return (json.suggestions[0].entities || []).map((hotelJSON: any) => {
+          return (
+            json.suggestions ? json.suggestions[0].entities || [] : []
+          ).map((hotelJSON: any) => {
             return {
               id: hotelJSON.geoId,
               name: hotelJSON.name,
