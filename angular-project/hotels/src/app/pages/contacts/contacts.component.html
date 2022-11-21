@@ -1,1 +1,25 @@
-<p>contacts works!</p>
+<form [formGroup]="contactsForm" (ngSubmit)="submit()">
+  <div>
+    <input class="contacts__input" type="email" formControlName="email" />
+    <div
+      class="contacts__error"
+      *ngIf="
+        contactsForm.get('email')?.invalid && contactsForm.get('email')?.touched
+      "
+    >
+      не валидно
+    </div>
+  </div>
+  <div>
+    <textarea formControlName="text"></textarea>
+    <div
+      class="contacts__error"
+      *ngIf="
+        contactsForm.get('text')?.invalid && contactsForm.get('text')?.touched
+      "
+    >
+      пустой текст
+    </div>
+  </div>
+  <button type="submit" [disabled]="contactsForm.invalid">send message</button>
+</form>

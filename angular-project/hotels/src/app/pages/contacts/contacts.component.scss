@@ -1,0 +1,15 @@
+.contacts__input {
+  &.ng-invalid.ng-touched {
+    border-color: red;
+    outline-color: red;
+  }
+}
+.contacts__error {
+  color: red;
+}
+
+button {
+  &[disabled] {
+    background-color: red;
+  }
+}

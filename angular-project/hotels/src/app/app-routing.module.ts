@@ -5,6 +5,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ContactsGuard } from './pages/contacts/guard/contacts.guard';
 import { HomeComponent } from './pages/home/home.component';
+import { PipesComponent } from './pages/pipes/pipes.component';
 
 const routes: Routes = [
   {
@@ -13,13 +14,20 @@ const routes: Routes = [
   },
   {
     path: 'hotels',
-    loadChildren: () =>
-      import('./hotels/hotels.module').then((m) => m.HotelsModule),
+    component: HotelsComponent,
+  },
+  {
+    path: 'hotels/:id',
+    component: HotelsComponent,
   },
   {
     path: 'contacts',
     component: ContactsComponent,
     canActivate: [ContactsGuard],
+  },
+  {
+    path: 'pipes',
+    component: PipesComponent,
   },
   {
     path: 'about',

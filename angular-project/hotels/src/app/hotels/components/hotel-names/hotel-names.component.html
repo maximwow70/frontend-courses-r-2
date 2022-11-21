@@ -1,5 +1,8 @@
 <div class="hotel-names">
-  <div class="hotel-names__name" *ngFor="let hotel of hotels">
-    {{ hotel.name }}
+  <div
+    class="hotel-names__name"
+    *ngFor="let hotel of hotelsService.hotels$ | async"
+  >
+    {{ hotel.name | titlecase }}
   </div>
 </div>

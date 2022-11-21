@@ -1,0 +1,30 @@
+<ul class="pipes">
+  <li class="pipes__item">
+    {{ myNumber | number: "10.5-6" }}
+    {{ 2.23 | number: "10.5-6" }}
+    {{ 123123123.23123312312 | number: "10.5-6":"fr" }}
+  </li>
+  <li class="pipes__item">
+    {{ 1231231.123123 | currency: "EUR":"symbol":"1.3-4":"fr" }}
+    {{ 1231231.123123 | currency: "USD":"code":"1.3-4":"ar" }}
+  </li>
+  <li class="pipes__item">
+    {{ 1 | percent }}
+  </li>
+  <li class="pipes__item">
+    {{ date | date: "full":undefined:"fr" }}
+  </li>
+  <li class="pipes__item">
+    {{ date | date: "full":undefined:"ar" }}
+  </li>
+  <li class="pipes__item">
+    {{ date | date: "full":undefined:"ru" }}
+  </li>
+  <li class="pipes__item">
+    {{ date | date: "short" }}
+  </li>
+  <li class="pipes__item">
+    {{ "I'm sad :(" | myCustomPipe }}
+    {{ "I'm sad :(" }}
+  </li>
+</ul>

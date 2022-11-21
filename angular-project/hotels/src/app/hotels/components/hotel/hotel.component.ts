@@ -15,19 +15,9 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import {
-  delay,
-  filter,
-  map,
-  Observable,
-  of,
   Subject,
-  Subscription,
-  switchMap,
-  take,
-  takeUntil,
 } from 'rxjs';
 import { Hotel } from '../../models/hotel';
-import { HotelsService } from '../../services/hotels.service';
 
 @Component({
   selector: 'app-hotel',

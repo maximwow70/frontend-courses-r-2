@@ -1,7 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { cloneDeep } from 'lodash';
-import { Subject, takeUntil } from 'rxjs';
-import { Hotel } from '../../models/hotel';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HotelsService } from '../../services/hotels.service';
 
 @Component({
@@ -10,23 +7,9 @@ import { HotelsService } from '../../services/hotels.service';
   styleUrls: ['./hotel-names.component.scss'],
 })
 export class HotelNamesComponent implements OnInit, OnDestroy {
-  private destroy$: Subject<void> = new Subject<void>();
+  constructor(public hotelsService: HotelsService) {}
 
-  public hotels: Hotel[] = [];
-
-  constructor(
-    private hotelsService: HotelsService,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
-
-  public ngOnInit(): void {
-    this.hotelsService.hotels$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((hotels: Hotel[]) => {
-        this.hotels = cloneDeep(hotels);
-        this.changeDetectorRef.markForCheck();
-      });
-  }
+  public ngOnInit(): void {}
 
   public ngOnDestroy(): void {}
 }
