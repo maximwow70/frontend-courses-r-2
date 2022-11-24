@@ -13,6 +13,9 @@ import { HotelComponent } from '../hotel/hotel.component';
 import { cloneDeep } from 'lodash';
 import { HotelsDataService } from '../../services/hotels-data.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadHotelsSuccess } from 'src/app/store/hotels/hotels.actions';
+import { HotelsStoreService } from 'src/app/store/hotels/hotels-store.service';
 
 @Component({
   selector: 'app-hotels',
@@ -36,11 +39,14 @@ export class HotelsComponent implements OnInit, OnDestroy {
     private hotelsService: HotelsService,
     private changeDetectorRef: ChangeDetectorRef,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private hotelsStoreService: HotelsStoreService
   ) {}
 
   public ngOnInit(): void {
-    combineLatest([this.hotelsService.hotels$, this.activatedRoute.params])
+    this.hotelsStoreService.loadHotels();
+
+    combineLatest([this.hotelsStoreService.hotels$, this.activatedRoute.params])
       .pipe(takeUntil(this.destroy$))
       .subscribe(([hotels, params]: [Hotel[], Params]) => {
         this.hotels = cloneDeep(hotels);
