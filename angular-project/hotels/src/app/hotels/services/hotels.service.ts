@@ -11,13 +11,13 @@ export class HotelsService {
   );
 
   constructor(private hotelsDataService: HotelsDataService) {
-    this.hotelsDataService
-      .getHotels()
-      .pipe(take(1))
-      .subscribe((hotels: Hotel[]) => {
-        this.hotels = hotels;
-        this.hotels$.next(this.hotels);
-      });
+    // this.hotelsDataService
+    //   .getHotels()
+    //   .pipe(take(1))
+    //   .subscribe((hotels: Hotel[]) => {
+    //     this.hotels = hotels;
+    //     this.hotels$.next(this.hotels);
+    //   });
   }
 
   public initializeHotels(hotels: Hotel[]): void {

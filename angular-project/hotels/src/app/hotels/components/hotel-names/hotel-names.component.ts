@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HotelsStoreService } from 'src/app/store/hotels/hotels-store.service';
 import { HotelsService } from '../../services/hotels.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { HotelsService } from '../../services/hotels.service';
   styleUrls: ['./hotel-names.component.scss'],
 })
 export class HotelNamesComponent implements OnInit, OnDestroy {
-  constructor(public hotelsService: HotelsService) {}
+  constructor(public hotelsStoreService: HotelsStoreService) {}
 
   public ngOnInit(): void {}
 

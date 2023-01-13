@@ -14,6 +14,13 @@ import fr from '@angular/common/locales/fr';
 import ar from '@angular/common/locales/ar';
 import ru from '@angular/common/locales/ru';
 import { MyCustomPipePipe } from './pipes/my-custom-pipe.pipe';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { hotelsReducer } from './store/hotels/hotels.reducer';
+import { HotelsStoreService } from './store/hotels/hotels-store.service';
+import { HotelsEffects } from './store/hotels/hotels.effects';
 
 @NgModule({
   declarations: [
@@ -31,8 +38,19 @@ import { MyCustomPipePipe } from './pipes/my-custom-pipe.pipe';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(
+      {
+        hotels: hotelsReducer,
+      },
+      {}
+    ),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([HotelsEffects]),
   ],
-  providers: [ContactsGuard],
+  providers: [ContactsGuard, HotelsStoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
